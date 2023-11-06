@@ -1,8 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour{
+
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI dialogueText;
 
     private Queue<string> sentences;
 
@@ -13,7 +18,8 @@ public class DialogueManager : MonoBehaviour{
     }
 
     public void StartDialogue(Dialogue dialogue){
-        Debug.Log("Iniciando conversa com " + dialogue.name);
+
+        nameText.text = dialogue.name;
 
         sentences.Clear();
 
@@ -31,7 +37,7 @@ public class DialogueManager : MonoBehaviour{
         }
 
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        dialogueText.text = sentence;
     }
 
     void EndDialogue(){
